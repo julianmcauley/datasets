@@ -67,4 +67,5 @@ target/
 
 # misc
 *.idea/*
+*.swp
 

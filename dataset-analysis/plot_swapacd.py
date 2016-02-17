@@ -41,7 +41,7 @@ def create_input_file_for_plots(input_path):
 	get_list_size_vectors(user_data, itemlist_size, wishlist_size)
 	get_cdf_frequency_vectors(cd_data, itemlist_size, wishlist_size)
 
-	target = open(input_path + "statisticsCD.txt", 'w')
+	target = open(input_path + "statistics_swapacd.txt", 'w')
 	target.write(itemlist_size.__str__())
 	target.write("\n")
 	target.write(wishlist_size.__str__())
@@ -51,7 +51,7 @@ def create_input_file_for_plots(input_path):
 	target.write(number_of_times_in_wishlist.__str__())
 	target.write("\n")
 
-	print("Wrote statisticsCD.txt")
+	print("Wrote statistics_swapacd.txt")
 
 	return user_data
 
@@ -74,7 +74,7 @@ def get_binning_of_values(measured_variable):
 
 def get_data(input_path):
 
-	with open(input_path + "statisticsCD.txt") as f:
+	with open(input_path + "statistics_swapacd.txt") as f:
 		content = f.readlines()
 
 	itemlistSize = list(map(int, content[0].replace("[", "").replace("]", "").split(",")))
@@ -86,7 +86,7 @@ def get_data(input_path):
 
 
 def plot_give_away_list_size_distribution(plot_path, itemlist_size):
-	out_filename = 'giveAwayListLength.pdf'
+	out_filename = 'giveawaylist_length.pdf'
 	plt.close('all')
 
 	fig = plt.figure()
@@ -107,7 +107,7 @@ def plot_give_away_list_size_distribution(plot_path, itemlist_size):
 
 
 def plot_wish_list_size_distribution(plot_path, wishlist_size):
-	out_filename = 'wishListLength.pdf'
+	out_filename = 'wishlist_length.pdf'
 	plt.close('all')
 
 	fig = plt.figure()
@@ -128,7 +128,7 @@ def plot_wish_list_size_distribution(plot_path, wishlist_size):
 
 
 def plot_item_have_popularity(plot_path, number_of_times_in_itemlist):
-	out_filename = 'giveAwayItemPopularity.pdf'
+	out_filename = 'giveaway_item_popularity.pdf'
 	plt.close('all')
 
 	fig = plt.figure()
@@ -148,7 +148,7 @@ def plot_item_have_popularity(plot_path, number_of_times_in_itemlist):
 	print("Wrote plot " + out_filename)
 
 def plot_item_wish_popularity(plot_path, number_of_times_in_wishlist):
-	out_filename = 'wishItemPopularity.pdf'
+	out_filename = 'wish_item_popularity.pdf'
 	plt.close('all')
 
 	fig = plt.figure()
@@ -178,17 +178,17 @@ def get_top_active_users(out_path, user_data):
 
 	print("Opening the files...")
 
-	with open(out_path + "topTenItemlist.json", 'w') as outfile:
+	with open(out_path + "top_users_for_itemlist_size.json", 'w') as outfile:
 			json.dump(top_ten_biggest_itemlist_users, outfile)
 
-	with open(out_path + "topTenWishlist.json", 'w') as outfile:
+	with open(out_path + "top_users_for_wishlist_size.json", 'w') as outfile:
 			json.dump(top_ten_biggest_wishlist_users, outfile)
 
 	print("Done writing top users.")
 
 
 if __name__ == '__main__':
-	input_path = "data_files/swapacd/"
+	input_path = "data-files/swapacd/"
 	[itemlist_size, wishlist_size, number_of_times_in_itemlist, number_of_times_in_wishlist] = get_data(input_path)
 
 	plots_path = 'output/swapacd/'

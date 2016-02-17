@@ -30,11 +30,11 @@ def create_input_file_for_plots(input_path):
 		list_of_number_of_posts.append(sorted_post[1])
 	list_of_number_of_posts.sort()
 
-	target = open(input_path + "statisticsReddit.txt", 'w')
+	target = open(input_path + "statistics_reddit.txt", 'w')
 	target.write(list_of_number_of_posts.__str__())
 	target.write("\n")
 
-	print("Wrote " + input_path + "statisticsReddit.txt\n")
+	print("Wrote " + input_path + "statistics_reddit.txt\n")
 
 def get_binning_of_values(measured_variable):
 	frequency_bins = dict()
@@ -55,7 +55,7 @@ def get_binning_of_values(measured_variable):
 
 def get_data(input_path):
 
-	with open(input_path + "statisticsReddit.txt") as f:
+	with open(input_path + "statistics_reddit.txt") as f:
 		content = f.readlines()
 
 	number_of_posts_per_user = list(map(int, content[0].replace("[", "").replace("]", "").split(",")))
@@ -180,7 +180,7 @@ def get_data_for_plots(input_path):
 	with open(input_path + 'gameswap_submissions.json', 'r') as f:
 		post_data = json.load(f)
 
-	with open(input_path + 'ignoreList.json', 'r') as f:
+	with open(input_path + 'ignore_list.json', 'r') as f:
 		ignore_list = json.load(f)
 
 	author_hash = dict()
@@ -262,7 +262,7 @@ def plot_piechart_for_submission_structure(plot_path,
 
 	# Set aspect ratio to be equal so that pie is drawn as a circle.
 	plt.axis('equal')
-	plt.savefig(plot_path + 'structuredInputStatistics.pdf')
+	plt.savefig(plot_path + 'structured_input_statistics.pdf')
 	plt.show()
 
 
@@ -303,7 +303,7 @@ def get_running_average(input_path, window_size):
 
 def plot_running_median_of_post_length_in_time(plot_path, running_average, index_date):
 
-	out_filename = "runningMedianOfPostLengthInTime.pdf"
+	out_filename = "running_median_of_post_length_in_time.pdf"
 
 	index = range(1, len(running_average) + 1)
 	fit = np.polyfit(index, running_average, 1)
@@ -325,7 +325,7 @@ def plot_running_median_of_post_length_in_time(plot_path, running_average, index
 	print("Wrote " + out_filename)
 
 def plot_body_length_distribution(plot_path, body_content_length):
-	out_filename = "scatterplotBodyContentLength.pdf"
+	out_filename = "scatterplot_body_content_length.pdf"
 
 	plt.close('all')
 	fig = plt.figure()
@@ -389,7 +389,7 @@ def get_lists_size(dict_list):
 	return list_len
 
 def plot_give_away_list_size_distribution(plot_path, have_dict):
-	out_filename = "giveAwayListLength.pdf"
+	out_filename = "giveawaylist_length.pdf"
 
 	[itemlist_lengths, frequency] = get_binning_of_values(get_lists_size(have_dict))
 
@@ -410,7 +410,7 @@ def plot_give_away_list_size_distribution(plot_path, have_dict):
 	print("Wrote " + out_filename)
 
 def plot_wish_list_size_distribution(plot_path, wish_dict):
-	out_filename = "wishListLength.pdf"
+	out_filename = "wishlist_length.pdf"
 
 	[wishlist_lengths, frequency] = get_binning_of_values(get_lists_size(wish_dict))
 
@@ -432,7 +432,7 @@ def plot_wish_list_size_distribution(plot_path, wish_dict):
 
 
 def plot_item_have_popularity(plot_path, have_game, have_dict):
-	out_filename = "giveAwayItemPopularity.pdf"
+	out_filename = "giveaway_item_popularity.pdf"
 
 	[have_popularity, frequency] = get_binning_of_values(nb_of_time_in_list(have_game, have_dict))
 
@@ -453,7 +453,7 @@ def plot_item_have_popularity(plot_path, have_game, have_dict):
 	print("Wrote " + out_filename)
 
 def plot_item_wish_popularity(plot_path, wish_game, wish_dict):
-	out_filename = "wishItemPopularity.pdf"
+	out_filename = "wishitem_popularity.pdf"
 
 	[have_popularity, frequency] = get_binning_of_values(nb_of_time_in_list(wish_game, wish_dict))
 
@@ -476,7 +476,7 @@ def plot_item_wish_popularity(plot_path, wish_game, wish_dict):
 
 if __name__ == '__main__':
 
-	input_path = "data_files/reddit/"
+	input_path = "data-files/reddit/"
 
 	plot_path = "output/reddit/"
 

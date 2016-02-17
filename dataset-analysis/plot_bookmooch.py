@@ -54,7 +54,7 @@ def get_cdf_arrays_for_plot(sorted_value_vector):
 	return [cdf_array, index_vector]
 
 def plot_book_givers_cdf(plot_path, givers_sorted):
-	out_filename = "giversCDF.pdf"
+	out_filename = "givers_cdf.pdf"
 
 	[percentage_of_giver_posts, index_vector] = get_cdf_arrays_for_plot(givers_sorted)
 
@@ -80,7 +80,7 @@ def plot_book_givers_cdf(plot_path, givers_sorted):
 	plt.show()
 
 def plot_book_receivers_cdf(plot_path, receivers_sorted):
-	out_filename = "receiversCDF.pdf"
+	out_filename = "receivers_cdf.pdf"
 
 	[percentage_of_receiver_posts, index_vector] = get_cdf_arrays_for_plot(receivers_sorted)
 
@@ -148,7 +148,7 @@ def get_data(input_path):
 	return [wishlist_size, itemlist_size, number_of_times_in_itemlist, number_of_times_in_wishlist]
 
 def plot_wish_list_size_distribution(plot_path, wishlist_size):
-	out_filename = "wishListLength.pdf"
+	out_filename = "wishlist_length.pdf"
 	plt.close('all')
 	
 	fig = plt.figure()
@@ -169,7 +169,7 @@ def plot_wish_list_size_distribution(plot_path, wishlist_size):
 	print("Wrote plot " + out_filename)
 
 def plot_give_away_list_size_distribution(plot_path, itemlist_size):
-	out_filename = "giveAwayListLength.pdf"
+	out_filename = "giveawaylist_length.pdf"
 	plt.close('all')
 
 	fig = plt.figure()
@@ -189,7 +189,7 @@ def plot_give_away_list_size_distribution(plot_path, itemlist_size):
 	print("Wrote plot " + out_filename)
 
 def plot_item_have_popularity(plot_path, number_of_times_in_itemlist):
-	out_filename = "giveAwayItemPopularity.pdf"
+	out_filename = "giveaway_item_popularity.pdf"
 	plt.close('all')
 
 	fig = plt.figure()
@@ -209,7 +209,7 @@ def plot_item_have_popularity(plot_path, number_of_times_in_itemlist):
 	print("Wrote plot " + out_filename)
 
 def plot_item_wish_popularity(plot_path, number_of_times_in_wishlist):
-	out_filename = "wishItemPopularity.pdf"
+	out_filename = "wish_item_popularity.pdf"
 	plt.close('all')
 
 	fig = plt.figure()
@@ -272,7 +272,7 @@ def setBoxColors(bp):
 
 
 def plot_boxplots(plot_path, filledOriginal, filledRepaired, prunedOriginal, prunedRepaired):
-	out_filename = "priceDistribution.png"
+	out_filename = "price_distribution.png"
 
 	filledOriginal[:] = [x / 100.0 for x in filledOriginal]
 	filledRepaired[:] = [x / 100.0 for x in filledRepaired]
@@ -315,7 +315,7 @@ def plot_boxplots(plot_path, filledOriginal, filledRepaired, prunedOriginal, pru
 
 
 def original_price_distribution_plot(plot_path, data_pruned_original):
-	out_filename = "priceFrequencyScatterPlotForOriginalPrices.pdf"
+	out_filename = "price_frequency_scatter_for_orig_prices.pdf"
 
 	fig = plt.figure()
 	fig.canvas.manager.window.attributes('-topmost', 1) #put widow on top
@@ -341,7 +341,7 @@ def original_price_distribution_plot(plot_path, data_pruned_original):
 
 if __name__ == '__main__':
 	plot_path = "output/bookmooch/"
-	input_path = "data_files/bookmooch/"
+	input_path = "data-files/bookmooch/"
 
 	[givers_sorted, receivers_sorted] = get_giver_and_receiver_frequency(input_path)
 

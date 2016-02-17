@@ -83,7 +83,7 @@ def plot_distribution_of_user_posting_activity(plot_path, number_of_posts_per_us
 	print("Wrote " + plot_name)
 
 def plot_cdf_of_user_submissions(plot_path, number_of_posts_per_user):
-	plot_name = 'reddit_sumbission_cdf.pdf'
+	plot_name = 'reddit_submission_cdf.pdf'
 
 	number_of_posts_per_user.sort(reverse=True)
 
@@ -104,8 +104,17 @@ def plot_cdf_of_user_submissions(plot_path, number_of_posts_per_user):
 	plt.yticks(np.arange(0, 1.1, 0.1))
 	plt.ylim([0, 1.01])
 	plt.xlim([0, len(index_vector)])
-	plt.xlabel('Number Of Users', fontsize=16)
-	plt.ylabel('Proportion of \nposts covered', fontsize=16)
+
+	plt.xticks(np.arange(0, len(index_vector) + 10, math.floor(len(index_vector) * 0.2)))
+
+	labels = ['0%', '20%', '40%', '60%', '80%', '100%']
+	plt.gca().set_xticklabels(labels)
+
+	labels = ['0%', '10%', '20%', '30%', '40%', '50%', '60%', '70%', '80%', '90%', '100%']
+	plt.gca().set_yticklabels(labels)
+
+	plt.xlabel('Percentage of active users', fontsize=16)
+	plt.ylabel('Percentage of \nsubmissions covered', fontsize=16)
 	plt.grid(True)
 	plt.savefig(plot_path + plot_name, bbox_inches='tight')
 	plt.show()
